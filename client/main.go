@@ -19,6 +19,13 @@ func main() {
 	// Create a buffer to read input from the user
 	reader := bufio.NewReader(os.Stdin)
 
+	go func() {
+		scanner := bufio.NewScanner(conn)
+		for scanner.Scan() {
+			fmt.Println(scanner.Text())
+		}
+	}()
+
 	fmt.Println("Connected to server. Enter messages:")
 
 	for {
